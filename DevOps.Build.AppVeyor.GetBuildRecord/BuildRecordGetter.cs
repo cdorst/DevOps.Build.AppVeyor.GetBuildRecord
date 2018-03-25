@@ -1,3 +1,6 @@
+// Copyright © Christopher Dorst. All rights reserved.
+// Licensed under the GNU General Public License, Version 3.0. See the LICENSE document in the repository root for license information.
+
 using DevOps.Build.AppVeyor.AzureStorageTableLedger;
 using Microsoft.WindowsAzure.Storage.Table;
 using System.Threading.Tasks;
@@ -11,11 +14,11 @@ namespace DevOps.Build.AppVeyor.GetBuildRecord
         /// <summary>Returns the given repository's dependency string from the Azure Storage Table AppVeyor build ledger</summary>
         public static async Task<AppveyorBuildTable> GetBuildRecordAsync(string name, string version)
         {
-var operation = TableOperation.Retrieve<AppveyorBuildTable>(name, version);
-var table = await GetTable();
-var result = await table.ExecuteAsync(operation);
-if (result?.Result == null) return null;
-return (AppveyorBuildTable)result.Result;;
+            var operation = TableOperation.Retrieve<AppveyorBuildTable>(name, version);
+            var table = await GetTable();
+            var result = await table.ExecuteAsync(operation);
+            if (result?.Result == null) return null;
+            return (AppveyorBuildTable)result.Result;;
         }
     }
 }
