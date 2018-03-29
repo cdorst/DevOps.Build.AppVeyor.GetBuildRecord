@@ -18,7 +18,7 @@ namespace DevOps.Build.AppVeyor.GetBuildRecord
             var table = await GetTable();
             var result = await table.ExecuteAsync(operation);
             if (result?.Result == null) return null;
-            return (AppveyorBuildTable)result.Result;;
+            return (AppveyorBuildTable)result.Result;
         }
     }
 }
